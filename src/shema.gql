@@ -40,6 +40,6 @@ input CreateOwnerInput {
 }
 
 input UpdateOwnerInput {
-  name: String
+  name: String!
   id: Int!
 }
