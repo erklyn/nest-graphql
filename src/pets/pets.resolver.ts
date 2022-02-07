@@ -3,20 +3,20 @@ import { CreatePetInput } from './dto/createPet.input';
 import { Pet } from './entities/pet.entity';
 import { PetsService } from './pets.service';
 
-@Resolver((of) => Pet)
+@Resolver(() => Pet)
 export class PetsResolver {
   constructor(private petService: PetsService) {}
 
-  @Query((returns) => [Pet])
+  @Query(() => [Pet])
   pets(): Promise<Pet[]> {
     return this.petService.findAll();
   }
-  @Query((returns) => Pet)
+  @Query(() => Pet)
   getPet(@Args('id', { type: () => Int }) id: number): Promise<Pet> {
     return this.petService.findOne(id);
   }
 
-  @Mutation((returns) => Pet)
+  @Mutation(() => Pet)
   createPet(
     @Args('createPetInput') createPetInput: CreatePetInput,
   ): Promise<Pet> {
